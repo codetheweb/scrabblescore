@@ -104,6 +104,7 @@ h1 {
   display: block;
   height: 8vw;
   width: 8vw;
+  z-index: 2;
   margin: 3vh;
   margin-right: 0.2vw;
   background-color: #f5cf90;
@@ -166,41 +167,51 @@ button {
           transition-duration: 0.2s;
 }
 
-#M2x {
+#M2x, .letter-2x {
   margin-right: 15vw;
   border: 0.1vw solid #2ECC40;
 }
 
-#M2x:hover {
+#M2x:hover, .letter-2x:hover {
   border: 0.1vw solid white;
   color: #2ECC40;
 }
 
-#M2x.active {
+#M2x.active, .letter-2x.active {
   background-color: #2ECC40;
 }
 
-#M2x.active:hover {
+#M2x.active:hover, .letter-2x.active:hover {
   border: 0.1vw solid #2ECC40;
   background-color: transparent;
 }
 
-#M3x {
+#M3x, .letter-3x {
   border: 0.1vw solid #FF851B;
 }
 
-#M3x:hover {
+#M3x:hover, .letter-3x:hover {
   border: 0.1vw solid white;
   color: #FF851B;
 }
 
-#M3x.active {
+#M3x.active, .letter-3x.active {
   background-color: #FF851B;
 }
 
-#M3x.active:hover {
+#M3x.active:hover, .letter-3x.active:hover {
   border: 0.1vw solid #FF851B;
   background-color: transparent;
+}
+
+.letter-buttons {
+  margin-top: 1vw;
+}
+
+.letter-buttons button {
+  font-size: 1.2vw;
+  padding: 0.5vw;
+  margin-right: 0.2vw;
 }
 
 #sponser-message {
