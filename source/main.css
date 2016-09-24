@@ -16,6 +16,7 @@ html, body {
 #container {
   flex-direction: column;
   color: white;
+  cursor: pointer;
 }
 
 #rotateScreen {
@@ -30,7 +31,8 @@ html, body {
   display: none;
   font-family: "Lato", sans-serif;
   font-weight: 100;
-  font-size: 30vw;
+  font-size: 25vw;
+  line-height: 40vw;
   text-align: center;
   justify-content: center;
   align-items: center;
