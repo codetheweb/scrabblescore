@@ -6,6 +6,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const rename       = require("gulp-rename");
 const htmlmin      = require('gulp-htmlmin');
 const replace      = require('gulp-replace');
+const ghPages      = require('gulp-gh-pages');
 
 gulp.task('default', ['watch']);
 
@@ -23,7 +24,12 @@ gulp.task('minifyHTML', function() {
 
 gulp.task('copyTexture', function() {
   return gulp.src('../source/texture.png').pipe(gulp.dest('../dist'));
-})
+});
+
+gulp.task('deploy', function() {
+  gulp.src('../CNAME').pipe(gulp.dest('../dist'));
+  return gulp.src('../dist/*').pipe(ghPages());
+});
 
 gulp.task('watch', function() {
   gulp.watch('../source/main.js', ['minifyJS']);
