@@ -16,6 +16,9 @@ html, body {
 #container {
   flex-direction: column;
   color: white;
+}
+
+#container.mobile {
   cursor: pointer;
 }
 
@@ -44,10 +47,6 @@ html, body {
   }
 }
 
-#rotateScreen.show {
-  display: block;
-}
-
 h1 {
   color: white;
   font-size: 5vw;
@@ -55,6 +54,17 @@ h1 {
   font-weight: 100;
   text-align: center;
   width: 100%;
+}
+
+#source a {
+  position: absolute;
+  top: 3vw;
+  right: 3vw;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  color: #7FDBFF;
+  font-size: 2vw;
+  text-decoration: none;
 }
 
 #score {
@@ -241,6 +251,10 @@ button {
 
 /* styles for mobile devices */
 @media (min-width:320px) and (max-width:600px) {
+  #container {
+    cursor: pointer; /* hack to make onclick() event fire properly */
+  }
+  
   #multipliers {
     margin-top: auto;
     margin-bottom: 10vw;

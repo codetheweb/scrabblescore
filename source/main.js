@@ -8,6 +8,7 @@ var hiddenTextBox = document.getElementById("invisibleInput");
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
   document.getElementById("message").innerHTML = "tap anywhere and start typing...";
+  document.getElementById("container").className = "mobile";
 }
 
 hiddenTextBox.onkeyup = function(evt) {
@@ -53,7 +54,6 @@ hiddenTextBox.onkeyup = function(evt) {
 
 document.onclick = function(evt) { // return focus to MHTB (Massive Hidden Text Box)
   hiddenTextBox.focus();
-  //alert("Focused");
 }
 // Button event handler
 document.querySelector('body').addEventListener('click', function(event) {
