@@ -1,4 +1,17 @@
-var scrabbleWord  = "";
+// Lazy load fonts
+var fonts = document.createElement("link");
+fonts.type = 'text/css';
+fonts.rel = 'stylesheet';
+fonts.href = 'https://fonts.googleapis.com/css?family=Lato:100,300%7COswald';
+document.body.appendChild(fonts);
+
+// Lazy load tile texture
+var texture = document.createElement("style");
+texture.type = 'text/css';
+texture.appendChild(document.createTextNode(".letter-container {background-image: url('texture.png');}"));
+document.body.appendChild(texture);
+
+var scrabbleWord  = '';
 var deletedText   = '<span id="message">start typing...</span>';
 var letterButtons = '<div class="letter-buttons"><button class="letter-2x">2X</button><button class="letter-3x">3X</button></div>';
 var multiplier    = 1;
