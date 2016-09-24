@@ -4,27 +4,18 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: #111111;
+  overflow-x: hidden;
 }
 
-body, #text {
-  display: -webkit-box;
-  display: -ms-flexbox;
+#container, #text {
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
-body {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+#container {
+  flex-direction: column;
   color: white;
-  overflow: hidden;
 }
 
 #rotateScreen {
@@ -38,14 +29,17 @@ body {
   color: black;
   display: none;
   font-family: "Lato", sans-serif;
-  font-size: 15vw;
+  font-weight: 100;
+  font-size: 30vw;
   text-align: center;
-  padding-top: 30%;
+  justify-content: center;
+  align-items: center;
 }
 
-#rotateScreen svg {
-  height: 70%;
-  width: auto;
+@media screen and (orientation:portrait) {
+	#rotateScreen {
+    display: flex;
+  }
 }
 
 #rotateScreen.show {
@@ -54,12 +48,11 @@ body {
 
 h1 {
   color: white;
-  font-size: 4vw;
+  font-size: 5vw;
   font-family: "Lato", sans-serif;
   font-weight: 100;
   text-align: center;
   width: 100%;
-  margin-top: 10vw;
 }
 
 #score {
@@ -67,16 +60,16 @@ h1 {
   font-size: 3vw;
   color: white;
   margin-bottom: 2vw;
+  text-align: center;
 }
 
 #invisibleInput {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 70%;
+  left: 50%;
+  width: 1%;
+  height: 1%;
   opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
 
 #invisibleInput:focus {
@@ -96,8 +89,9 @@ h1 {
   font-family: "Lato", sans-serif;
   font-size: 2.5vw;
   color: white;
-  -webkit-animation: fade 1s infinite;
   animation: fade 1s infinite;
+  margin-top: 10vw;
+  margin-bottom: 3vw;
 }
 
 .letter-container {
@@ -108,7 +102,7 @@ h1 {
   margin: 3vh;
   margin-right: 0.2vw;
   background-color: #f5cf90;
-  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/49914/veneer-birch-texture-fs8.png');
+  background-image: url('texture.png');
   border-color: #A59275;
   border-style: solid;
   border-top-width: 0.2vw;
@@ -159,12 +153,9 @@ button {
   color: white;
   background-color: transparent;
   border-radius: 0.2vw;
-  -webkit-transition-property: all;
   transition-property: all;
-  -webkit-transition-delay: 0.1s;
-          transition-delay: 0.1s;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
+  transition-delay: 0.1s;
+  transition-duration: 0.2s;
 }
 
 #M2x, .letter-2x {
@@ -216,10 +207,9 @@ button {
 
 #sponser-message {
   color: white;
-  margin-left: auto;
-  margin-right: 3vw;
-  margin-top: auto;
-  margin-bottom: 2vw;
+  position: absolute;
+  bottom: 2vw;
+  right: 3vw;
   font-family: "Lato", sans-serif;
   font-weight: 300;
   z-index: 2;
@@ -228,10 +218,8 @@ button {
 #sponser-message > a {
   color: #7FDBFF;
   text-decoration: none;
-  -webkit-transition-property: all;
   transition-property: all;
-  -webkit-transition-duration: 0.1s;
-          transition-duration: 0.1s;
+  transition-duration: 0.1s;
 }
 
 @media (pointer:fine) { /* only show sneaky muted color on devices able to hover */
@@ -277,12 +265,7 @@ button {
 }
 
 @keyframes fade {
-  0%   { opacity:1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
-  50%  { opacity:0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
-  100% { opacity:1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
-}
-@-webkit-keyframes fade{
-  0%   { opacity:1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
-  50%  { opacity:0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
-  100% { opacity:1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
+  0%   { opacity: 1;}
+  50%  { opacity: 0;}
+  100% { opacity: 1;}
 }

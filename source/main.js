@@ -10,24 +10,6 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
   document.getElementById("message").innerHTML = "tap anywhere and start typing...";
 }
 
-// make sure we use landscape on mobile
-if (window.matchMedia("(orientation: portrait)").matches) {
-  document.getElementById("rotateScreen").className = "show";
-}
-window.addEventListener("orientationchange", function() { // add listener in case device is rotated in use
-  if (screen.orientation.angle == 0) {
-    document.getElementById("rotateScreen").className = "show";
-  }
-  else {
-    document.getElementById("rotateScreen").className = "";
-  }
-}, false);
-
-document.getElementById("invisibleInput").onkeyup = function(evt) {
-  evt = evt || window.event;
-    var charCode = evt.keyCode || evt.which;
-}
-
 hiddenTextBox.onkeyup = function(evt) {
     evt.preventDefault();
     
@@ -57,6 +39,7 @@ hiddenTextBox.onkeyup = function(evt) {
     }
     
     if (charCode == 8) { // Delete letter element
+      removeMultiplier(getNodeIndex(document.getElementById("text").lastChild));
       container.removeChild(document.getElementById("text").lastChild);
       scrabbleWord = scrabbleWord.substring(0, scrabbleWord.length - 1);
     }
@@ -71,9 +54,8 @@ hiddenTextBox.onkeyup = function(evt) {
 document.onclick = function(evt) { // return focus to MHTB (Massive Hidden Text Box)
   hiddenTextBox.focus();
 }
- // Button event handler
+// Button event handler
 document.querySelector('body').addEventListener('click', function(event) {
-  event.preventDefault();
   if (event.target.tagName.toLowerCase() === 'button') { // only look at button clicks
     if (event.target.id == "M2x" || event.target.id == "M3x") { // one of the big buttons
       if (event.target.className != "active") {
@@ -131,11 +113,18 @@ function getScore(word) {
 
 function multiplyLetter(multiplier, position) {
   if (letterMultipliers.find(x => x.position === position) != undefined || multiplier == 1) {
-    letterMultipliers.splice(letterMultipliers.indexOf(position), 1);
+    removeMultiplier(position);
     if (multiplier == 1) {return true;}
   }
-  letterMultipliers.push({position: position, multiplier: multiplier});
-  
+  letterMultipliers.push({position: position, multiplier: multiplier}); 
+}
+
+function removeMultiplier(position) {
+  console.log("Remove");
+  if (letterMultipliers.find(x => x.position === position) != undefined) {
+    letterMultipliers.splice(letterMultipliers.indexOf(letterMultipliers.find(x => x.position === position)), 1);
+  }
+  return true;
 }
 
 function getNodeIndex(node) { // Thanks http://stackoverflow.com/a/11762728
