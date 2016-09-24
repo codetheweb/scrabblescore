@@ -52,9 +52,6 @@ hiddenTextBox.onkeyup = function(evt) {
     renderScore(scrabbleWord);
 };
 
-document.onclick = function(evt) { // return focus to MHTB (Massive Hidden Text Box)
-  hiddenTextBox.focus();
-}
 // Button event handler
 document.querySelector('body').addEventListener('click', function(event) {
   if (event.target.tagName.toLowerCase() === 'button') { // only look at button clicks
@@ -88,6 +85,11 @@ document.querySelector('body').addEventListener('click', function(event) {
     }
     
     renderScore(scrabbleWord);
+    
+    hiddenTextBox.blur() // be nice to mobile users
+  }
+  else { // return focus to MHTB (Massive Hidden Text Box)
+    hiddenTextBox.focus();
   }
 });
 
