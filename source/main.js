@@ -99,11 +99,20 @@ document.querySelector('body').addEventListener('click', function(event) {
     
     renderScore(scrabbleWord);
     
-    hiddenTextBox.blur() // be nice to mobile users
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      hiddenTextBox.blur(); // be nice to mobile users
+    }
+    else {
+      hiddenTextBox.focus();
+    }
   }
   else { // return focus to MHTB (Massive Hidden Text Box)
     hiddenTextBox.focus();
   }
+  
+  /*if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    hiddenTextBox.focus();
+  }*/
 });
 
 function renderScore(word) {
